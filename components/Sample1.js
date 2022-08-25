@@ -11,10 +11,10 @@ function Sample1(props){
   const [updateBtn, setUpdateBtn] = useState(true);
   const tableId = "sample1-table";
 
-  // useEffect(()=> {
-  //   let st = localStorage.getItem("message");
-  //   setData(JSON.parse(st));
-  // }, []);
+  useEffect(()=> {
+    let st = localStorage.getItem("message");
+    setData(JSON.parse(st !== null ? st : []));
+  }, []);
 
   useEffect(()=> {
     $('#' + tableId + ' thead :checkbox').prop("checked", headCheck);
