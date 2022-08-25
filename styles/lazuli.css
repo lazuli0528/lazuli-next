@@ -1,0 +1,106 @@
+
+/************** background colors **************/
+
+.bg-lazuli,
+.bg-lazuli *{
+    background-color: hsl(259, 100%, 9%);
+    color: hsl(88, 1%, 85%) !important;
+    border-color: hsl(245, 51%, 17%) !important;
+}
+
+.bg-sodalite,
+.bg-lazuli .card-body * {
+    background-color: hsl(245, 51%, 17%);
+    color: hsl(88, 1%, 85%);
+    border-color: hsl(259, 100%, 9%) !important;
+}
+
+.bg-lazurite,
+.bg-lazuli .card-body th {
+    background-color: hsl(247, 61%, 31%);
+    color: hsl(82, 2%, 93%);
+    border-color: hsl(259, 100%, 9%);
+}
+
+.bg-ultramarine{
+    background-color: hsl(230, 97%, 36%);
+    color: hsl(88, 1%, 85%);
+}
+
+.bg-hauyne,
+.bg-lazuli .card-body .btn {
+    background-color: hsl(225, 75%, 38%);
+    color: hsl(88, 1%, 85%);
+}
+
+.bg-amber {
+    background-color: hsl(32, 99%, 38%) !important;
+    color: hsl(1, 100%, 18%) !important;
+}
+
+.bg-coral {
+    background-color: hsl(1, 94%, 34%) !important;
+    color: hsl(88, 1%, 85%) !important;
+}
+
+
+/************** text colors **************/
+
+.text-pyrite,
+.bg-lazuli a:not(.btn) {
+    color: hsl(57, 22%, 56%) !important;
+    text-decoration: none;
+}
+
+    a.text-pyrite:hover,
+    .bg-lazuli a:not(.btn):hover {
+        text-decoration: underline;
+    }
+
+.text-coral {
+    color: hsl(1, 94%, 34%) !important;
+}
+
+/************** border colors **************/
+
+.border-1-lazuli,
+.bg-lazuli .card-body textarea{
+    border: solid 1px hsl(259, 100%, 9%) !important;
+}
+
+.border-2-sodalite,
+.bg-lazuli .btn,
+.bg-lazuli .card,
+.bg-lazuli .card-body .card-header,
+.bg-lazuli .card-body .card-footer{
+    border: solid 2px hsl(245, 51%, 17%) !important;
+}
+
+.border-1-pyrite,
+.bg-lazuli .card-body textarea:hover,
+.bg-lazuli .card-body textarea:focus{
+    border: solid 1px hsl(57, 22%, 56%) !important;
+}
+
+.border-2-pyrite,
+.bg-lazuli .btn:hover,
+.bg-lazuli .card-body .form-check-input{
+    border: solid 2px hsl(57, 22%, 56%) !important;
+}
+
+/************** shadow colors **************/
+
+.shadow-pyrite,
+.bg-lazuli .card-body textarea:focus {
+    box-shadow: 0 0 1px hsl(57, 22%, 56%);
+}
+
+/************** size **************/
+
+.lz-width-xs {
+    width: 1rem !important;
+}
+
+.lz-width-md {
+    width: 5rem !important;
+}
