@@ -6,7 +6,7 @@ import $ from 'jquery';
 function Sample1(props){
   const [input, setInput] = useState("");
   const [value, setValue] = useStorage("message");
-  const [data, setData] = useState(value ? JSON.parse(value) : []);
+  const [data, setData] = useState(value ? JSON.parse(value) : [[]]);
   const [headCheck, setHeadCheck] = useState(false);
   const [updateBtn, setUpdateBtn] = useState(true);
   const tableId = "sample1-table";
