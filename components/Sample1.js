@@ -13,7 +13,10 @@ function Sample1(props){
 
   useEffect(()=> {
     let st = localStorage.getItem("message");
-    setData(JSON.parse(st !== null ? st : []));
+
+    if (st !== null){
+      setData(JSON.parse(st));
+    }
   }, []);
 
   useEffect(()=> {
