@@ -6,15 +6,15 @@ import $ from 'jquery';
 function Sample1(props){
   const [input, setInput] = useState("");
   const [value, setValue] = useStorage("message");
-  const [data, setData] = useState(value ? JSON.parse(value) : [[]]);
+  const [data, setData] = useState(value ? JSON.parse(value) : []);
   const [headCheck, setHeadCheck] = useState(false);
   const [updateBtn, setUpdateBtn] = useState(true);
   const tableId = "sample1-table";
 
-  useEffect(()=> {
-    let st = localStorage.getItem("message");
-    setData(JSON.parse(st));
-  }, []);
+  // useEffect(()=> {
+  //   let st = localStorage.getItem("message");
+  //   setData(JSON.parse(st));
+  // }, []);
 
   useEffect(()=> {
     $('#' + tableId + ' thead :checkbox').prop("checked", headCheck);
@@ -100,8 +100,6 @@ function Sample1(props){
     setInput("");
     setHeadCheck(false);
     checkAllProp(false);
-
-    console.log(data);
   }
 
   const updateit = ()=> {

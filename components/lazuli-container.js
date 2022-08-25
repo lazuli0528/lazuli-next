@@ -16,7 +16,7 @@ class Container extends React.Component{
                                 <div>Next.js Sample - CRUD by localStorage</div>
                             </div>
                             <div className="card-body p-0">
-                                {/* <Sample1></Sample1> */}
+                                <Sample1></Sample1>
                             </div>
                         </div>
                     </div>                    
