@@ -106,11 +106,11 @@
 }
 
 /************** dark mode **************/
-
+/* 
 @media (prefers-color-scheme: dark) {
     html {
         background-color: hsl(259, 100%, 9%);
         color: hsl(88, 1%, 85%) !important;
         border-color: hsl(245, 51%, 17%) !important;
     }
-}
+} */
