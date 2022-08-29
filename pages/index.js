@@ -11,7 +11,8 @@ export default function Home() {
   return (
     <Fragment>
       <Head>
-        <meta name="theme-color" content="#4285f4"></meta>
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="white"></meta>
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="black"></meta>
       </Head>
       <Nav></Nav>
       <Container></Container>
