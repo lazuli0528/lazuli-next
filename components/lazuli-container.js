@@ -6,12 +6,10 @@ import Sample1 from '../components/Sample1';
 import Sample2 from '../components/Sample2';    
 
 export default function Container(props){
-    let item_id = 0;
-
     return (
         <div className="bg-lazuli">
             <CardColumns>
-                <Card key={item_id++} title="Next.js Sample - CRUD by localStorage">
+                <Card title="Next.js Sample - CRUD by localStorage">
                     <Sample1></Sample1>
                 </Card>
                 <Card title="Next.js Sample - Getting data from REST API">
