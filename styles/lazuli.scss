@@ -1,0 +1,152 @@
+$lazuli: hsl(259, 100%, 9%);
+$sodalite: hsl(245, 51%, 17%);
+$lazurite: hsl(247, 61%, 31%);
+$ultramarine: hsl(230, 97%, 36%);
+$hauyne: hsl(225, 75%, 38%);
+$pyrite: hsl(57, 22%, 56%);
+$calcite: hsl(88, 1%, 85%);
+$coral: hsl(1, 94%, 34%);
+$amberLight: hsl(32, 99%, 38%);
+$amberDark: hsl(1, 100%, 18%);
+
+@mixin bgBase($bgColor, $textColor, $borderColor) {
+    background-color: $bgColor;
+    color: $textColor;
+    border-color: $borderColor;
+}
+
+@mixin borderBase($style, $width, $color) {
+    border: $style $width $color !important;
+}
+
+/************** background **************/
+
+.bg-lazuli {
+    @include bgBase($lazuli, $calcite, $sodalite);
+
+    a.btn{
+        @extend .text-calcite;
+        @extend .border-2-sodalite;
+
+        &:hover {
+            @extend .border-2-pyrite;
+        }
+    }
+
+    a:not(.btn) {
+        @extend .text-pyrite;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .card {
+        @extend .bg-lazuli;
+        @extend .border-2-sodalite;
+        
+        .card-body {
+            @extend .bg-sodalite;
+
+            textarea {
+                @extend .bg-sodalite;
+
+                &:hover {
+                    @extend .border-1-pyrite;
+                }
+
+                &:focus {
+                    @extend .border-1-pyrite;
+                    @extend .shadow-pyrite;
+                }
+            }
+
+            table {
+                @extend .border-1-lazuli;
+
+                th {
+                    @extend .bg-lazurite;
+                }
+
+                td {
+                    @extend .bg-sodalite;
+                }
+            }
+
+            .btn {
+                @extend .bg-hauyne;
+                border-width: 2px !important;
+
+                &:hover {
+                    @extend .border-2-pyrite;
+                }
+            }
+
+            .form-check-input {
+                @extend .bg-lazuli;
+                @extend .border-2-pyrite;
+            }
+
+            .list-group-item {
+                @extend .bg-sodalite;
+            }
+        }
+    }
+}
+
+.bg-sodalite {
+    @include bgBase($sodalite, $calcite, $lazuli);
+}
+
+.bg-lazurite {
+    @include bgBase($lazurite, $calcite, $lazuli);
+}
+
+.bg-hauyne {
+    @include bgBase($hauyne, $calcite, $sodalite);
+}
+
+/************** text **************/
+
+.text-pyrite {
+    color: $pyrite !important;
+}
+
+.text-calcite {
+    color: $calcite !important;
+}
+
+.text-coral {
+    color: $coral !important;
+}
+
+/************** border **************/
+
+@for $i from 1 through 2 {
+    .border-#{$i}-lazuli {
+        @include borderBase(solid, 1px * $i, $lazuli);
+    }
+
+    .border-#{$i}-sodalite {
+        @include borderBase(solid, 1px * $i, $sodalite);
+    }
+
+    .border-#{$i}-pyrite {
+        @include borderBase(solid, 1px * $i, $pyrite);
+    }
+}
+
+/************** shadow **************/
+
+.shadow-pyrite {
+    box-shadow: 0 0 1px $pyrite !important;
+}
+
+/************** dark **************/
+
+@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: dark;
+        @include bgBase($lazuli, $calcite, $sodalite);
+    }
+}

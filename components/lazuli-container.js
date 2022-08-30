@@ -11,7 +11,7 @@ class Container extends React.Component{
                 <div className="row row-cols-lg-2 row-cols-1">
                     <div className="col mb-4">
                         <div className="card">
-                            <div className="card-header border-bottom">
+                            <div className="card-header">
                                 <div>Next.js Sample - CRUD by localStorage</div>
                             </div>
                             <div className="card-body p-0">
@@ -21,7 +21,7 @@ class Container extends React.Component{
                     </div>                    
                     <div className="col mb-4">
                         <div className="card">
-                            <div className="card-header border-bottom">
+                            <div className="card-header">
                                 <div>Next.js Sample - Getting data from REST API</div>
                             </div>
                             <div className="card-body p-0">
@@ -31,7 +31,7 @@ class Container extends React.Component{
                     </div>                    
                     <div className="col mb-4">
                         <div className="card">
-                            <div className="card-header border-bottom">
+                            <div className="card-header">
                                 <div>DataTables Sample</div>
                             </div>
                             <div className="card-body p-0">
