@@ -9,11 +9,7 @@ import Copyright from '../components/lazuli-copyright';
 export default function Home() {
   return (
     <Fragment>
-      <Head>
-        {/* <meta name="theme-color" content="hsl(259, 100%, 9%)"></meta> 
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="hsl(259, 100%, 9%)"></meta>
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="hsl(259, 100%, 9%)"></meta> */}
-      </Head>
+      <Head></Head>
       <Nav></Nav>
       <Container></Container>
       <Copyright></Copyright>
