@@ -9,10 +9,10 @@ export default function Container(props){
     return (
         <div className="bg-lazuli">
             <CardColumns>
-                <Card title="Next.js Sample - CRUD by localStorage">
+                <Card title="Next.js Sample - localStorage CRUD by jquery">
                     <Sample1></Sample1>
                 </Card>
-                <Card title="Next.js Sample - Getting data from REST API">
+                <Card title="Next.js Sample - Getting data by axios">
                     <Sample2></Sample2>
                 </Card>
             </CardColumns>

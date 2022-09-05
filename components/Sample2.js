@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import $ from "jquery";
-
 function Sample2(props) {
     const [data, setData] = useState([]);
 
