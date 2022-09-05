@@ -147,6 +147,8 @@ $amberDark: hsl(1, 100%, 18%);
 @media (prefers-color-scheme: dark) {
     html {
         color-scheme: dark;
+    }
+    body {
         @include bgBase($lazuli, $calcite, $sodalite);
     }
 }
