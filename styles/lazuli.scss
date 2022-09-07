@@ -21,16 +21,15 @@ $amberDark: hsl(1, 100%, 18%);
 
 /************** background **************/
 
+body:has(.bg-lazuli) {
+    @include bgBase($lazuli, $calcite, $sodalite);
+}
+
 .bg-lazuli {
     @include bgBase($lazuli, $calcite, $sodalite);
 
     a.btn{
-        @extend .text-calcite;
-        @extend .border-2-sodalite;
-
-        &:hover {
-            @extend .border-2-pyrite;
-        }
+        @extend .btn-lazuli;
     }
 
     a:not(.btn) {
@@ -106,6 +105,14 @@ $amberDark: hsl(1, 100%, 18%);
     @include bgBase($hauyne, $calcite, $sodalite);
 }
 
+.bg-amber {
+    @include bgBase($amberLight, $amberDark, $amberDark);
+}
+
+.bg-coral {
+    @include bgBase($coral, $calcite, $calcite);
+}
+
 /************** text **************/
 
 .text-pyrite {
@@ -142,13 +149,33 @@ $amberDark: hsl(1, 100%, 18%);
     box-shadow: 0 0 1px $pyrite !important;
 }
 
+/************** button **************/
+
+.btn-lazuli {
+    @extend .text-calcite;
+    @extend .border-2-sodalite;
+
+    &:hover {
+        @extend .border-2-pyrite;
+    }
+}
+
+/************** sizing **************/
+
+@for $i from 0 through 100 {
+    .vh-#{$i} {
+        height: 1vh * $i;
+    }
+}
+
 /************** dark **************/
 
 @media (prefers-color-scheme: dark) {
     html {
         color-scheme: dark;
     }
-    body {
-        @include bgBase($lazuli, $calcite, $sodalite);
-    }
+}
+
+#aa {
+    height: 800px !important;
 }

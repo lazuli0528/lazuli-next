@@ -123,61 +123,53 @@ function Sample1(props){
 
   return (
     <div className="container">
-    {/* <div className="card">
-      <div className="card-header "></div>
-      <div className="card-body p-1">
-        <textarea className="form-control" disabled>{data && data[0] ? data[0][0] : "nodata."}</textarea>
-      </div>
-      <div className="card-footer "></div>
-    </div> */}
-
-    <div className="row row-cols-2">
-      <div className="col mb-3">
-        <nav className="navbar">
-          <div className="d-flex justify-contents-start align-items">
-            <button type="button" className="btn btn-primary btn-sm" onClick={addit}>ADD</button>
-            <div className="ms-2"></div>
-            <button type="button" className="btn btn-danger btn-sm" onClick={updateit} disabled={updateBtn}>UPDATE</button>
-          </div>
-        </nav>
-
-        <textarea className="form-control mt-1" onChange={inputit} value={input}></textarea>
-      </div>
-      <div className="col mb-3">
-        <nav className="navbar">
-          <div className="d-flex justify-contents-start align-items">
-            <button type="button" className="btn btn-warning btn-sm" onClick={initit}>INIT</button>
-            <div className="ms-2"></div>
-            <button type="button" className="btn btn-danger btn-sm" onClick={removeit}>DEL</button>
-          </div>
-        </nav>
-
-        <div className="table-responsive">
-              <table id={tableId} className="table table-sm table-bordered table-hover">
-                <thead>
-                  <tr className="alert-primary">
-                    <th><input type="checkbox" className="form-check-input" defaultChecked={headCheck} onClick={checkAll}></input></th>
-                    <th className="align-middle">message</th>
-                    <th className="align-middle">time</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.map((val) =>(
-                    <tr key={item_id++}>
-                      <td className="align-middle">
-                        <input type="checkbox" className="form-check-input" onChange={selectRow} defaultChecked={val[0]}></input>
-                      </td>
-                      <td className="align-middle">{val[1]}</td>
-                      <td className="align-middle">{val[2]}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+      <div className="row row-cols-2">
+        <div className="col mb-3">
+          <nav className="navbar">
+            <div className="d-flex justify-contents-start align-items">
+              <button type="button" className="btn btn-primary btn-sm" onClick={addit}>ADD</button>
+              <div className="ms-2"></div>
+              <button type="button" className="btn btn-danger btn-sm" onClick={updateit} disabled={updateBtn}>UPDATE</button>
             </div>
+          </nav>
+
+          <textarea className="form-control mt-1" onChange={inputit} value={input}></textarea>
+        </div>
+        <div className="col mb-3">
+          <nav className="navbar">
+            <div className="d-flex justify-contents-start align-items">
+              <button type="button" className="btn btn-warning btn-sm" onClick={initit}>INIT</button>
+              <div className="ms-2"></div>
+              <button type="button" className="btn btn-danger btn-sm" onClick={removeit}>DEL</button>
+            </div>
+          </nav>
+
+          <div className="table-responsive vh-25">
+                <table id={tableId} className="table table-sm table-bordered table-hover">
+                  <thead>
+                    <tr className="alert-primary">
+                      <th><input type="checkbox" className="form-check-input" defaultChecked={headCheck} onClick={checkAll}></input></th>
+                      <th className="align-middle">message</th>
+                      <th className="align-middle">time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.map((val) =>(
+                      <tr key={item_id++}>
+                        <td className="align-middle">
+                          <input type="checkbox" className="form-check-input" onChange={selectRow} defaultChecked={val[0]}></input>
+                        </td>
+                        <td className="align-middle">{val[1]}</td>
+                        <td className="align-middle">{val[2]}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default Sample1;
