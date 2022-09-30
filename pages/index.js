@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import Head from 'next/head'
-import Nav from '../components/lazuli-nav';
-import Container from '../components/lazuli-container';
+import Nav from '../components/LazuliNav';
+import Container from '../components/LazuliContainer';
 import Copyright from '../components/lazuli-copyright';
 
 export default function Home() {

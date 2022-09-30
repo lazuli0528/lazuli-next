@@ -47,7 +47,7 @@ body:has(.bg-lazuli) {
         .card-body {
             @extend .bg-sodalite;
 
-            textarea {
+            input,textarea {
                 @extend .bg-sodalite;
 
                 &:hover {
@@ -105,6 +105,14 @@ body:has(.bg-lazuli) {
     @include bgBase($hauyne, $calcite, $sodalite);
 }
 
+.bg-pyrite {
+    @include bgBase($pyrite, $lazuli, $lazuli);
+}
+
+.bg-calcite {
+    @include bgBase($calcite, $lazuli, $lazuli);
+}
+
 .bg-amber {
     @include bgBase($amberLight, $amberDark, $amberDark);
 }
@@ -121,6 +129,10 @@ body:has(.bg-lazuli) {
 
 .text-calcite {
     color: $calcite !important;
+}
+
+.text-amber {
+    color: $amberLight !important;
 }
 
 .text-coral {
@@ -174,8 +186,4 @@ body:has(.bg-lazuli) {
     html {
         color-scheme: dark;
     }
-}
-
-#aa {
-    height: 800px !important;
 }
