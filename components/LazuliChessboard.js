@@ -30,9 +30,9 @@ function LazuliChessboard(props){
     <div id="chessboard" className="m-2">
       {ranks.map((rank)=> (
         <Rank key={rank.id}>
-          {rank.squares.map((sq)=> (
+          {rank.squares.map((sq, j)=> (
             // <Square key={sq.rank*sq.col} class={sq.class}>{sq.col + sq.rank}</Square>
-            <Square key={sq.rank*sq.col} class={sq.class}>{sq.content}</Square>
+            <Square key={j} class={sq.class}>{sq.content}</Square>
           ))}
         </Rank>
       ))}
