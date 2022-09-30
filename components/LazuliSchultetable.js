@@ -2,6 +2,7 @@ import { React, useState, useEffect, Fragment } from 'react';
 import Rank from './LazuliRank';
 import Square from './LazuliSquare';
 import $ from 'jquery';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const initSquareNum = (length, array=[])=> {
   for(var i=0; i<length*length; i++){
@@ -21,14 +22,19 @@ function LazuliSchultetable(props){
     shuffle();
   }, []);
 
-  useEffect(()=> {
-    setRandomArray(initSquareNum(length));
-    setNum(1);
-  }, [length]);
+  // useEffect(()=> {
+  //   setRandomArray(initSquareNum(length));
+  //   setNum(1);
+  // }, [length]);
 
   useEffect(()=> {
     shuffle();
   }, [randomArray]);
+
+  const start = ()=> {
+    setRandomArray(initSquareNum(length));
+    setNum(1);
+  }
 
   const shuffle = ()=> {
     randomArray.sort(()=> { return 0.5 - Math.random() });
@@ -72,7 +78,12 @@ function LazuliSchultetable(props){
     <Fragment>
       <nav className="navbar">
         <div className="ms-auto"></div>
-        <input type="number" min={0} className="form-control form-control-sm text-end" style={{'height': '1rem', 'width': '4rem'}} value={length} onChange={(e)=> { setLength(e.target.value) }}></input>
+        <div className="d-flex justify-content-start align-items-center rounded-pill bg-lazuli">
+          <input type="number" min={1} className="form-control form-control-sm text-end rounded-pill" style={{'height': '1rem', 'width': '3rem'}} value={length} onChange={(e)=> { setLength(e.target.value) }}></input>
+          <button type="button" className="btn btn-sm rounded-pill" onClick={start}>
+            <FontAwesomeIcon icon={['fab', 'apple']} />
+          </button>
+        </div>
       </nav>
       <div className="d-flex justify-content-center align-items-top mb-2">
         <div id="schultetable">
