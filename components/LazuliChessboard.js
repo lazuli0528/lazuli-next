@@ -10,8 +10,9 @@ function LazuliChessboard(props){
 
       for(var j=0; j<length; j++){
         sqData.push({
-          rank: i+1,
-          col: j+1,
+          rank: 8-i,
+          col: String.fromCharCode(97 + j),
+          content: "",
           class: (i + j) % 2 == 0 ? "bg-calcite" : "bg-pyrite"
         });
       }
@@ -30,7 +31,8 @@ function LazuliChessboard(props){
       {ranks.map((rank)=> (
         <Rank key={rank.id}>
           {rank.squares.map((sq)=> (
-            <Square key={sq.rank*sq.col} class={sq.class}></Square>
+            // <Square key={sq.rank*sq.col} class={sq.class}>{sq.col + sq.rank}</Square>
+            <Square key={sq.rank*sq.col} class={sq.class}>{sq.content}</Square>
           ))}
         </Rank>
       ))}
