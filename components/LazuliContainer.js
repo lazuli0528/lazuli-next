@@ -4,7 +4,7 @@ import CardColumns from './LazuliCardColumns';
 import Card from './LazuliCard';
 import Sample1 from './Sample1';
 import Sample2 from './Sample2';
-import SchulteTable from './LazuliSchulteTable';
+import SchulteTable from './LazuliSchultetable';
 import Chessboard from './LazuliChessboard';
 
 function LazuliContainer(props){
