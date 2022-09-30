@@ -81,7 +81,7 @@ function LazuliSchultetable(props){
         <div className="d-flex justify-content-start align-items-center rounded-pill bg-lazuli">
           <input type="number" min={1} className="form-control form-control-sm text-end rounded-pill" style={{'height': '1rem', 'width': '3rem'}} value={length} onChange={(e)=> { setLength(e.target.value) }}></input>
           <button type="button" className="btn btn-sm rounded-pill" onClick={start}>
-            <FontAwesomeIcon icon={['fab', 'apple']} />
+            start
           </button>
         </div>
       </nav>
