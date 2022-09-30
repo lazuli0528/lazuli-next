@@ -12,7 +12,7 @@ const initSquareNum = (length, array=[])=> {
 }
 
 function LazuliSchultetable(props){
-  const [length, setLength] = useState(props.length !== undefined ? props.length : 3);
+  const [length, setLength] = useState(props.length !== undefined ? props.length : 5);
   const [randomArray, setRandomArray] = useState(initSquareNum(length));
   const [ranks, setRanks] = useState([]);
   const [num, setNum] = useState(1);
@@ -20,11 +20,6 @@ function LazuliSchultetable(props){
   useEffect(()=> {
     shuffle();
   }, []);
-
-  // useEffect(()=> {
-  //   setRandomArray(initSquareNum(length));
-  //   setNum(1);
-  // }, [length]);
 
   useEffect(()=> {
     shuffle();
@@ -69,7 +64,7 @@ function LazuliSchultetable(props){
       $(e.target).removeClass('bg-lazurite').addClass('bg-hauyne');
       setTimeout(()=> {
         $(e.target).removeClass('bg-hauyne').addClass('bg-lazurite');
-      }, 100);
+      }, 50);
     }
   }
 
