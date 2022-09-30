@@ -12,7 +12,7 @@ const initSquareNum = (length, array=[])=> {
 }
 
 function LazuliSchultetable(props){
-  const [length, setLength] = useState(props.length !== undefined ? props.length : 0);
+  const [length, setLength] = useState(props.length !== undefined ? props.length : 3);
   const [randomArray, setRandomArray] = useState(initSquareNum(length));
   const [ranks, setRanks] = useState([]);
   const [num, setNum] = useState(1);
@@ -72,9 +72,9 @@ function LazuliSchultetable(props){
     <Fragment>
       <nav className="navbar">
         <div className="ms-auto"></div>
-        <input type="number" className="form-control form-control-sm" style={{'height': '1rem', 'width': '4rem'}} value={length} onChange={(e)=> { setLength(e.target.value) }}></input>
+        <input type="number" min={0} className="form-control form-control-sm text-end" style={{'height': '1rem', 'width': '4rem'}} value={length} onChange={(e)=> { setLength(e.target.value) }}></input>
       </nav>
-      <div className="d-flex justify-content-center align-items-top">
+      <div className="d-flex justify-content-center align-items-top mb-2">
         <div id="schultetable">
           <h4 className="text-center">{num}</h4>
           {ranks.map((rank)=> (

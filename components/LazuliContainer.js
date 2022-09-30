@@ -12,7 +12,7 @@ function LazuliContainer(props){
         <div className="container bg-lazuli">
             <CardColumns>
                 <Card title="Schulte Table">
-                    <SchulteTable length={5}></SchulteTable>
+                    <SchulteTable></SchulteTable>
                 </Card>
                 <Card title="Chessboard">
                     <div className="d-flex justify-content-center">

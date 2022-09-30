@@ -26,7 +26,7 @@ function LazuliChessboard(props){
   });
 
   return (
-    <div id="chessboard" className="">
+    <div id="chessboard" className="m-2">
       {ranks.map((rank)=> (
         <Rank key={rank.id}>
           {rank.squares.map((sq)=> (
