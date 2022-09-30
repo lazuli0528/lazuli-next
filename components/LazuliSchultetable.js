@@ -2,7 +2,6 @@ import { React, useState, useEffect, Fragment } from 'react';
 import Rank from './LazuliRank';
 import Square from './LazuliSquare';
 import $ from 'jquery';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const initSquareNum = (length, array=[])=> {
   for(var i=0; i<length*length; i++){
