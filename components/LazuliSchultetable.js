@@ -73,7 +73,7 @@ function LazuliSchultetable(props){
       $(e.target).removeClass('bg-lazurite').addClass('bg-hauyne');
       setTimeout(()=> {
         $(e.target).removeClass('bg-hauyne').addClass('bg-lazurite');
-      }, 50);
+      }, 100);
     }
   }
 
