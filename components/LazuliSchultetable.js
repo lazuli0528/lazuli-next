@@ -3,16 +3,16 @@ import Rank from './LazuliRank';
 import Square from './LazuliSquare';
 import $ from 'jquery';
 
-const defaultLength = 5;
-const initSquareNum = (length, array=[])=> {
-  for(var i=0; i<length*length; i++){
-    array.push(i + 1);
+function LazuliSchultetable(props){
+  const defaultLength = 5;
+  const initSquareNum = (length, array=[])=> {
+    for(var i=0; i<length*length; i++){
+      array.push(i + 1);
+    }
+  
+    return array;
   }
 
-  return array;
-}
-
-function LazuliSchultetable(props){
   const [length, setLength] = useState(props.length !== undefined ? props.length : defaultLength);
   const [randomArray, setRandomArray] = useState(initSquareNum(length));
   const [ranks, setRanks] = useState([]);
