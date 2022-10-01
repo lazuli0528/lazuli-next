@@ -6,11 +6,13 @@ function LazuliCard(props) {
 
     return (
         <div className="card h-100">
-            <div className="card-header">
-                <div className="d-flex justify-content-start align-items-center">
-                    <div>{props.title}</div>
+            {props.title !== undefined &&
+                <div className="card-header">
+                    <div className="d-flex justify-content-start align-items-center">
+                        <div>{props.title}</div>
+                    </div>
                 </div>
-            </div>
+            }
             <div className="card-body p-0">
                 {contents}
             </div>
