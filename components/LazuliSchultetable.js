@@ -1,8 +1,9 @@
-import { React, useState, useEffect, Fragment } from 'react';
+import { React, useState, useEffect } from 'react';
 import Rank from './LazuliRank';
 import Square from './LazuliSquare';
 import $ from 'jquery';
 
+const defaultLength = 5;
 const initSquareNum = (length, array=[])=> {
   for(var i=0; i<length*length; i++){
     array.push(i + 1);
@@ -12,7 +13,7 @@ const initSquareNum = (length, array=[])=> {
 }
 
 function LazuliSchultetable(props){
-  const [length, setLength] = useState(props.length !== undefined ? props.length : 5);
+  const [length, setLength] = useState(props.length !== undefined ? props.length : defaultLength);
   const [randomArray, setRandomArray] = useState(initSquareNum(length));
   const [ranks, setRanks] = useState([]);
   const [num, setNum] = useState(1);
@@ -20,6 +21,14 @@ function LazuliSchultetable(props){
   useEffect(()=> {
     shuffle();
   }, []);
+
+  useEffect(()=> {
+    setLength(props.length !== undefined ? props.length : defaultLength);
+  }, [props.length]);
+
+  useEffect(()=> {
+    start();
+  }, [props.isStart]);
 
   useEffect(()=> {
     shuffle();
@@ -69,29 +78,18 @@ function LazuliSchultetable(props){
   }
 
   return (
-    <Fragment>
-      <nav className="navbar">
-        <div className="ms-auto"></div>
-        <div className="d-flex justify-content-start align-items-center rounded-pill bg-lazuli">
-          <input type="number" min={1} className="form-control form-control-sm text-end rounded-pill" style={{'height': '1rem', 'width': '3rem'}} value={length} onChange={(e)=> { setLength(e.target.value) }}></input>
-          <button type="button" className="btn btn-sm rounded-pill" onClick={start}>
-            start
-          </button>
-        </div>
-      </nav>
-      <div className="d-flex justify-content-center align-items-top mb-2">
-        <div id="schultetable">
-          <h4 className="text-center">{num}</h4>
-          {ranks.map((rank)=> (
-            <Rank key={rank.id}>
-              {rank.squares.map((sq)=> (
-                <Square key={sq.rank*sq.col} class={sq.class} value={sq.content} onClick={clickSquare}>{sq.content}</Square>
-              ))}
-            </Rank>
-          ))}
-        </div>
+    <div className="d-flex justify-content-center align-items-top mb-2">
+      <div id="schultetable">
+        <h4 className="text-center">{num}</h4>
+        {ranks.map((rank)=> (
+          <Rank key={rank.id}>
+            {rank.squares.map((sq)=> (
+              <Square key={sq.rank*sq.col} class={sq.class} value={sq.content} onClick={clickSquare}>{sq.content}</Square>
+            ))}
+          </Rank>
+        ))}
       </div>
-    </Fragment>
+    </div>
   );
 }
 
