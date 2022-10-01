@@ -70,10 +70,10 @@ function LazuliSchultetable(props){
         setNum(num+1);
       }
   
-      // $(e.target).removeClass('bg-lazurite').addClass('bg-hauyne');
-      // setTimeout(()=> {
-      //   $(e.target).removeClass('bg-hauyne').addClass('bg-lazurite');
-      // }, 50);
+      $(e.target).removeClass('bg-lazurite').addClass('bg-hauyne');
+      setTimeout(()=> {
+        $(e.target).removeClass('bg-hauyne').addClass('bg-lazurite');
+      }, 50);
     }
   }
 
