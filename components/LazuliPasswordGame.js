@@ -6,14 +6,23 @@ const GetLength = (len, defaultLen=8)=> {
 }
 
 // ASCII 33 - 126
-const randomAscii = (min = 33, max = 127)=> {
-  return Math.floor(Math.random() * (max - min) + min);
+const randomAscii = (props)=> {
+  var min = 33;
+  var max = 127;
+  var ret = String.fromCharCode(Math.floor(Math.random() * (max - min) + min));
+
+  if (props.isNotMark){
+    // !ret.match(/[[a-z][A-Z][0-9]]/) ? randomAscii(props) : false;
+    !ret.match(/\w/) ? ret = randomAscii(props) : false;
+  }
+
+  return ret;
 }
 
-const generatePassword = (length)=> {
+const generatePassword = (props)=> {
   var ret = "";
-  for(var i=0; i<length; i++){
-    ret += String.fromCharCode(randomAscii());
+  for(var i=0; i<props.length; i++){
+    ret += randomAscii(props);
   }
   return ret;
 }
@@ -24,7 +33,7 @@ function LazuliPassword(props){
   const [input, setInput] = useState("");
 
   useEffect(()=> {
-    setPassword(generatePassword(length));
+    setPassword(generatePassword(props));
   }, []);
 
   useEffect(()=> {
@@ -32,7 +41,7 @@ function LazuliPassword(props){
   }, [props.length]);
 
   useEffect(()=> {
-    setPassword(generatePassword(length));
+    setPassword(generatePassword(props));
     $('#passwordInput').removeClass('is-valid is-invalid')
   }, [props.isReload]);
 

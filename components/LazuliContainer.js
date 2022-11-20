@@ -18,13 +18,14 @@ function LazuliContainer(props){
     const [pwLen, setPwLen] = useState(8);
     const [isReloadPw, setIsReloadPw] = useState(false);
     const [isHiddenPw, setIsHiddenPw] = useState(false);
+    const [isNotMark, setIsNotMark] = useState(true);
 
     return (
         <div className="container bg-lazuli">
             <CardColumns>
                 <Card title="Password Game">
                     <nav className="navbar">
-                        <PasswordGame length={pwLen} isReload={isReloadPw} isHidden={isHiddenPw}></PasswordGame>
+                        <PasswordGame length={pwLen} isReload={isReloadPw} isHidden={isHiddenPw} isNotMark={isNotMark}></PasswordGame>
                         <div className="ms-auto"></div>
                         <NavPill className="bg-lazuli">
                             <LenPill
@@ -33,6 +34,10 @@ function LazuliContainer(props){
                             <BtnPill className="btn-reload" onClick={()=> {setIsReloadPw(!isReloadPw)}}></BtnPill>
                             <BtnPill className="btn-hidden" onClick={()=> {setIsHiddenPw(!isHiddenPw)}}></BtnPill>
                         </NavPill>
+                        <div className="form-check form-switch switch-pyrite m-2">
+                            <label className="form-check-label" htmlFor="isNotMark">is not mark</label>
+                            <input className="form-check-input" type="checkbox" role="switch" id="isNotMark" defaultChecked={isNotMark} onClick={(e)=> {setIsNotMark(!isNotMark);}} />
+                        </div>
                     </nav>
                 </Card>
                 <Card title="Schulte Table">
