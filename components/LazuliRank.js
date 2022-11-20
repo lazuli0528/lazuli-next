@@ -10,7 +10,7 @@ function LazuliRank(props) {
   const [className, setClassName] = useState(props.class !== undefined ? props.class : "");
 
   return (
-    <div className={className} style={style}>{props.children}</div>
+    <div id={props.id} className={className} style={style}>{props.children}</div>
   );
 }
 

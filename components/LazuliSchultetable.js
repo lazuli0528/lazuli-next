@@ -3,8 +3,11 @@ import Rank from './LazuliRank';
 import Square from './LazuliSquare';
 import $ from 'jquery';
 
+const GetLength = (len, defaultLen=5)=> {
+  return len !== undefined ? len : defaultLen;
+}
+
 function LazuliSchultetable(props){
-  const defaultLength = 5;
   const initSquareNum = (length, array=[])=> {
     for(var i=0; i<length*length; i++){
       array.push(i + 1);
@@ -13,7 +16,7 @@ function LazuliSchultetable(props){
     return array;
   }
 
-  const [length, setLength] = useState(props.length !== undefined ? props.length : defaultLength);
+  const [length, setLength] = useState(GetLength(props.length));
   const [randomArray, setRandomArray] = useState(initSquareNum(length));
   const [ranks, setRanks] = useState([]);
   const [num, setNum] = useState(1);
@@ -23,12 +26,12 @@ function LazuliSchultetable(props){
   }, []);
 
   useEffect(()=> {
-    setLength(props.length !== undefined ? props.length : defaultLength);
+    setLength(GetLength(props.length));
   }, [props.length]);
 
   useEffect(()=> {
     start();
-  }, [props.isStart]);
+  }, [props.isReload]);
 
   useEffect(()=> {
     shuffle();
@@ -55,10 +58,7 @@ function LazuliSchultetable(props){
         });
       }
 
-      rankData.push({
-        id: i+1,
-        squares: sqData,
-      });
+      rankData.push(sqData);
     }
 
     setRanks(rankData);
@@ -78,17 +78,14 @@ function LazuliSchultetable(props){
   }
 
   return (
-    <div className="d-flex justify-content-center align-items-top mb-2">
-      <div id="schultetable">
-        <h4 className="text-center">{num}</h4>
-        {ranks.map((rank)=> (
-          <Rank key={rank.id}>
-            {rank.squares.map((sq)=> (
-              <Square key={sq.rank*sq.col} class={sq.class} value={sq.content} onClick={clickSquare}>{sq.content}</Square>
-            ))}
-          </Rank>
-        ))}
-      </div>
+    <div id="schultetable">
+      {ranks.map((rank, i)=> (
+        <Rank key={i}>
+          {rank.map((sq)=> (
+            <Square key={sq.rank*sq.col} class={sq.class} value={sq.content} onClick={clickSquare}>{sq.content}</Square>
+          ))}
+        </Rank>
+      ))}
     </div>
   );
 }

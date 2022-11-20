@@ -5,9 +5,13 @@ $ultramarine: hsl(230, 97%, 36%);
 $hauyne: hsl(225, 75%, 38%);
 $pyrite: hsl(57, 22%, 56%);
 $calcite: hsl(88, 1%, 85%);
-$coral: hsl(1, 94%, 34%);
+$coral: hsl(4, 87%, 69%);
 $amberLight: hsl(32, 99%, 38%);
 $amberDark: hsl(1, 100%, 18%);
+
+// :export {
+//     pyrite: $pyrite;
+// }
 
 @mixin bgBase($bgColor, $textColor, $borderColor) {
     background-color: $bgColor;
@@ -17,6 +21,10 @@ $amberDark: hsl(1, 100%, 18%);
 
 @mixin borderBase($style, $width, $color) {
     border: $style $width $color !important;
+}
+
+@mixin svgBase($viewBox, $fill, $d) {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='#{$viewBox}'><path fill='#{$fill}' d='#{$d}'/></svg>");
 }
 
 /************** background **************/
@@ -40,25 +48,38 @@ body:has(.bg-lazuli) {
         }
     }
 
+    .form-control {
+        @extend .bg-sodalite;
+
+        &:not(:disabled):hover {
+            @extend .border-1-pyrite;
+        }
+
+        &:not(:disabled):focus {
+            @extend .border-1-pyrite;
+            @extend .shadow-pyrite;
+        }
+    }
+
+    .is-invalid {
+        @extend .border-1-coral;
+
+        &:not(:disabled):hover {
+            @extend .border-1-coral;
+        }
+
+        &:not(:disabled):focus {
+            @extend .border-1-coral;
+            @extend .shadow-coral;
+        }
+    }
+    
     .card {
         @extend .bg-lazuli;
         @extend .border-2-sodalite;
         
         .card-body {
             @extend .bg-sodalite;
-
-            input,textarea {
-                @extend .bg-sodalite;
-
-                &:hover {
-                    @extend .border-1-pyrite;
-                }
-
-                &:focus {
-                    @extend .border-1-pyrite;
-                    @extend .shadow-pyrite;
-                }
-            }
 
             table {
                 @extend .border-1-lazuli;
@@ -73,17 +94,16 @@ body:has(.bg-lazuli) {
             }
 
             .btn {
-                @extend .bg-hauyne;
-                border-width: 2px !important;
-
-                &:hover {
-                    @extend .border-2-pyrite;
-                }
+                @extend .btn-hauyne;
             }
 
             .form-check-input {
                 @extend .bg-sodalite;
                 @extend .border-2-pyrite;
+            }
+
+            .form-switch {
+                @extend .switch-pyrite;
             }
 
             .list-group-item {
@@ -161,12 +181,20 @@ body:has(.bg-lazuli) {
     .border-#{$i}-pyrite {
         @include borderBase(solid, 1px * $i, $pyrite);
     }
+
+    .border-#{$i}-coral {
+        @include borderBase(solid, 1px * $i, $coral);
+    }
 }
 
 /************** shadow **************/
 
 .shadow-pyrite {
     box-shadow: 0 0 1px $pyrite !important;
+}
+
+.shadow-coral {
+    box-shadow: 0 0 1px $coral !important;
 }
 
 /************** button **************/
@@ -177,6 +205,49 @@ body:has(.bg-lazuli) {
 
     &:hover {
         @extend .border-2-pyrite;
+    }
+}
+
+.btn-hauyne {
+    @extend .bg-hauyne;
+    border-width: 2px !important;
+
+    &:hover {
+        background-color: $hauyne !important;
+        @extend .border-2-pyrite;
+    }
+}
+
+.btn-svg {
+    height: 2rem;
+    width: 2rem;
+}
+
+.btn-reload {
+    @extend .btn-svg;
+    @include svgBase('0 0 100 100', $calcite, "M20 50 Q20 20 50 20 Q80 20 80 40 H70 Q70 30 50 30 Q30 30 30 40 Z   M70 40 H90 L70 55 V40   M80 50 Q80 80 50 80 Q20 80 20 60 H30 Q30 70 50 70 Q70 70 70 60 Z   M30 60 H10 L30 45 V60");
+}
+
+.btn-hidden {
+    @extend .btn-svg;
+    @include svgBase('0 0 100 100', $calcite, "M20 50 Q50 20 80 50 Q50 80 20 50   M80,20 L20,80 L17,77 L77,17 Z");
+}
+
+/************** swicth **************/
+
+.switch-pyrite {
+    .form-check-input {
+        @extend .border-2-lazuli;
+        @extend .bg-calcite;
+
+        &:checked{
+            @extend .bg-pyrite;
+        }
+    }
+
+    .form-check-label {
+        @extend .text-pyrite;
+        user-select: none;
     }
 }
 
@@ -194,4 +265,83 @@ body:has(.bg-lazuli) {
     html {
         color-scheme: dark;
     }
+}
+
+/************** chess **************/
+
+@mixin chessPieceBase($color, $piece) {
+    @include svgBase('0 0 100 100', $color, $piece + "M35,80 H65 V72 H35 Z  M30,90 H70 V82 H30 Z");
+}
+
+@function pawn() {
+    @return "M43,40 A7,7 0 0,0 57,33 A7,7 0 0,0 43,40  M40,45 H60 V50 H40 Z  M45,52 L40,70 H60 L55,52 Z";
+}
+
+@function rook() {
+    @return "M35,24 V40 H65 V24 H59 V32 H53 V24 H47 V32 H41 V24 H35    M40,42 L38,70 H62 L60,42 Z";
+}
+
+@function knight() {
+    // @return "M 44 22 Q 33 25 26 31 Q 24 39 22 46 Q 18 52 15 59 Q 17 62 19 64 Q 31 65 36 61 Q 44 50 49 46 Q 55 43 53 49 Q 48 55 41 61 Q 33 67 33 70   H67   Q 76 70 75 68 Q 73 62 72 57 Q 71 52 71 45 Q 72 42 74 37 Q 73 34 71 31 Q 62 25 60 24 Q 55 23 54 21 Q 53 14 52 14 Q 49 18 46 20";
+    @return "M38,70 H62 L60,50 L65,32 L55,24 L53,18 L45,24 L36,26 L30,37 L18,50 L20,55 L30,60 L40,53 L44,55 L35,66 Z";
+}
+
+@function bishop() {
+    @return "M47,22 A3,3 0 0,0 53,16 A3,3 0 0,0 47,22   M45,45 H55 Q65,35 53,24 H47 Q35,35 45,45   M58,30 L50,38 L48,36 56,28    M40,45 H60 V50 H40 Z   M45,52 L40,70 H60 L55,52 Z";
+}
+
+@function queen() {
+    @return "M45,15 A5,5 0 0,0 55,10 A5,5 0 0,0 45,15   M45,45 H55 L65,17 L60,23 L55,17 L50,23 L45,17 L40,23 L35,17 Z   M40,45 H60 V50 H40 Z   M45,52 L40,70 H60 L55,52 Z   ";
+}
+
+@function king() {
+    @return "M47,4 H53 V10 H59 V16 H53 V22 H47 V16 H41 V10 H47 V4   M45,45 H55 L65,22 H35 Z   M40,45 H60 V50 H40 Z   M45,52 L40,70 H60 L55,52 Z   ";
+}
+
+.w-pawn {
+    @include chessPieceBase($hauyne, pawn());
+}
+
+.b-pawn {
+    @include chessPieceBase($lazurite, pawn());
+}
+
+.w-rook {
+    @include chessPieceBase($hauyne, rook());
+}
+
+.b-rook {
+    @include chessPieceBase($lazurite, rook());
+}
+
+.w-knight {
+    @include chessPieceBase($hauyne, knight());
+}
+
+.b-knight {
+    @include chessPieceBase($lazurite, knight());
+}
+
+.w-bishop {
+    @include chessPieceBase($hauyne, bishop());
+}
+
+.b-bishop {
+    @include chessPieceBase($lazurite, bishop());
+}
+
+.w-queen {
+    @include chessPieceBase($hauyne, queen());
+}
+
+.b-queen {
+    @include chessPieceBase($lazurite, queen());
+}
+
+.w-king {
+    @include chessPieceBase($hauyne, king());
+}
+
+.b-king {
+    @include chessPieceBase($lazurite, king());
 }

@@ -2,8 +2,8 @@ import { React, useState } from 'react';
 
 function LazuliSquare(props){
   const style = {
-    'height': '2rem',
-    'width': '2rem',
+    'height': props.height !== undefined ? props.height : '3rem',
+    'width': props.width !== undefined ? props.width : '3rem',
     // 'border-radius': '0.1rem',
     'display': 'flex',
     'justifyContent': 'center',
@@ -19,7 +19,7 @@ function LazuliSquare(props){
   }
   
   return (
-    <div className={props.class} value={props.value} style={style} onClick={props.onClick}>
+    <div id={props.id} className={props.class} value={props.value} style={style} onClick={props.onClick}>
       {props.children}
     </div>
   );

@@ -6,30 +6,49 @@ import Sample1 from './Sample1';
 import Sample2 from './Sample2';
 import SchulteTable from './LazuliSchultetable';
 import Chessboard from './LazuliChessboard';
+import Canvas from './LazuliCanvas';
+import PasswordGame from './LazuliPasswordGame';
+import NavPill from './LazuliNavPill';
+import LenPill from './LazuliLenPill';
+import BtnPill from './LazuliBtnPill';
 
 function LazuliContainer(props){
-    const [length, setLength] = useState(5);
-    const [isStartShulte, setIsStartShulte] = useState(false);
-
-    const start = ()=> {
-        setIsStartShulte(!isStartShulte);
-    }
+    const [shulteLength, setShulteLength] = useState(5);
+    const [isReloadShulte, setIsReloadShulte] = useState(false);
+    const [pwLen, setPwLen] = useState(8);
+    const [isReloadPw, setIsReloadPw] = useState(false);
+    const [isHiddenPw, setIsHiddenPw] = useState(false);
 
     return (
         <div className="container bg-lazuli">
             <CardColumns>
+                <Card title="Password Game">
+                    <nav className="navbar">
+                        <PasswordGame length={pwLen} isReload={isReloadPw} isHidden={isHiddenPw}></PasswordGame>
+                        <div className="ms-auto"></div>
+                        <NavPill className="bg-lazuli">
+                            <LenPill
+                                value={pwLen}
+                                onChange={(e)=> { setPwLen(e.target.value) }}></LenPill>
+                            <BtnPill className="btn-reload" onClick={()=> {setIsReloadPw(!isReloadPw)}}></BtnPill>
+                            <BtnPill className="btn-hidden" onClick={()=> {setIsHiddenPw(!isHiddenPw)}}></BtnPill>
+                        </NavPill>
+                    </nav>
+                </Card>
                 <Card title="Schulte Table">
                     <nav className="navbar">
                         <div className="ms-auto"></div>
-                        <div className="d-flex justify-content-start align-items-center rounded-pill bg-lazuli">
-                            <input type="number" min={1} className="form-control form-control-sm text-end rounded-pill" style={{'height': '1rem', 'width': '3rem'}} value={length} onChange={(e)=> { setLength(e.target.value) }}></input>
-                            <button type="button" className="btn btn-sm rounded-pill" onClick={start}>
-                                start
-                            </button>
-                        </div>
+                        <NavPill className="bg-lazuli">
+                            <LenPill
+                                value={shulteLength}
+                                onChange={(e)=> { setShulteLength(e.target.value) }}></LenPill>
+                            <BtnPill className="btn-reload" onClick={()=> {setIsReloadShulte(!isReloadShulte)}}></BtnPill>
+                        </NavPill>
                     </nav>
 
-                    <SchulteTable length={length} isStart={isStartShulte}></SchulteTable>
+                    <div className="d-flex justify-content-center align-items-top mb-2">
+                        <SchulteTable length={shulteLength} isReload={isReloadShulte}></SchulteTable>
+                    </div>
                 </Card>
                 <Card title="Chessboard">
                     <div className="d-flex justify-content-center">
